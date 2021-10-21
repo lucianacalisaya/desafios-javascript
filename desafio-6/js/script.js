@@ -1,4 +1,6 @@
 let listaDePlataformas = ["Netflix", "HBO Max", "Disney+", "Star+", "Paramount", "Amazon Prime"]
+listaDePlataformas.sort();
+console.log(listaDePlataformas);
 
 function Pelicula(titulo, genero, duracion, director, elenco, plataforma) {
     this.titulo = titulo;
@@ -42,9 +44,8 @@ let pelicula = prompt("Ingrese la pelicula que desea buscar");
 let resultado = calcular(pelicula);
 alert("La pelicula " + pelicula + " esta en: " + resultado);
 
-
 let listaDePeliculas = [pelicula1, pelicula2, pelicula3, pelicula4];
-listaDePeliculas.sort(pelicula1.titulo, pelicula2.titulo, pelicula3.titulo, pelicula4.titulo);
+
 for (const pelicula of listaDePeliculas) {
     console.log(pelicula.titulo);
 }
