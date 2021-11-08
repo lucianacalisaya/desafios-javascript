@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/style.css">
+    <title>Platfind</title>
+</head>
+
+<body>
+    <header class="header">
+        <h1 class="header__title">Platfind</h1>
+        <div class="header__searchbox">
+            <h2 class="header__searchbox--title">Encuentra tu serie o palicula favorita en Platfind</h2>
+            <div class="header__searchbox--form">
+                <form action="" id="searchboxForm">
+                    <input type="text" id="peliculaBuscada" class="header__searchbox--text">
+                    <input type="submit" class="header__searchbox--submit" onchange="guardarBusqueda(this)">
+                </form>
+                <!--Icono-->
+            </div>
+
+        </div>
+        <div class="header__slider"></div>
+    </header>
+    <main>
+        <div id="resultado">
+
+        </div>
+    </main>
+    <section class="peliculasRecomendadas">
+        <div id="card" class="card">
+            <div class="card__item">
+                <div class="card__favorite">
+                    <a href="#" class="heartSimulation" onclick="guardarPelicula();"></a>
+                </div>
+                <div class="card__image">
+                    <div class="card__test-image"></div>
+                    <!-- <img src="" alt="" class="card__image--width"> -->
+                </div>
+                <div class="card__text">
+                    <div class="card__test-text"></div>
+                    <div class="card__test-text"></div>
+                </div>
+            </div>
+            <div class="card__item">
+                <div class="card__favorite">
+                    <a href="#" class="heartSimulation" onclick="guardarPelicula();"></a>
+                </div>
+                <div class="card__image">
+                    <div class="card__test-image"></div>
+                    <!-- <img src="" alt="" class="card__image--width"> -->
+                </div>
+                <div class="card__text">
+                    <div class="card__test-text"></div>
+                    <div class="card__test-text"></div>
+                </div>
+            </div>
+            <div class="card__item">
+                <div class="card__favorite">
+                    <a href="#" class="heartSimulation" onclick="guardarPelicula();"></a>
+                </div>
+                <div class="card__image">
+                    <div class="card__test-image"></div>
+                    <!-- <img src="" alt="" class="card__image--width"> -->
+                </div>
+                <div class="card__text">
+                    <div class="card__test-text"></div>
+                    <div class="card__test-text"></div>
+                </div>
+            </div>
+            <div class="card__item">
+                <div class="card__favorite">
+                    <a href="#" class="heartSimulation" onclick="guardarPelicula();"></a>
+                </div>
+                <div class="card__image">
+                    <div class="card__test-image"></div>
+                    <!-- <img src="" alt="" class="card__image--width"> -->
+                </div>
+                <div class="card__text">
+                    <div class="card__test-text"></div>
+                    <div class="card__test-text"></div>
+                </div>
+            </div>
+            <div class="card__item">
+                <div class="card__favorite">
+                    <a href="#" class="heartSimulation" onclick="guardarPelicula();"></a>
+                </div>
+                <div class="card__image">
+                    <div class="card__test-image"></div>
+                    <!-- <img src="" alt="" class="card__image--width"> -->
+                </div>
+                <div class="card__text">
+                    <div class="card__test-text"></div>
+                    <div class="card__test-text"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="footer__container">
+            <ul class="footer__list">
+                <li class="footer__list-item">Terminos y condiciones</li>
+                <li class="footer__list-item">Novedades</li>
+                <li class="footer__list-item">Trabaja con nosotros</li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
