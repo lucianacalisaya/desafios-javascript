@@ -29,8 +29,35 @@ let searchboxText = document.getElementById("peliculaBuscada");
 function buscarPelicula(ev) {
     let peliculaBuscada = searchboxText.value;
     const resultadoBusqueda = listaDePeliculas.find(pelicula => pelicula.titulo === peliculaBuscada)
-    alert("La pelicula " + peliculaBuscada + " esta en " + resultadoBusqueda.plataforma);
+
+    let cardBody = document.createElement("div");
+    cardBody.setAttribute("class", "card__body");
+    let cardText = document.createElement("div");
+    cardText.setAttribute("class", "card__text");
+
+    let cardTitle = document.createElement("h4");
+    cardTitle.setAttribute("class", "card__title");
+    cardTitle.innerHTML = `${resultadoBusqueda.titulo}`;
+    cardText.appendChild(cardTitle);
+
+    let cardPlatform = document.createElement("ul");
+    cardPlatform.setAttribute("class", "card__platform");
+    cardPlatform.innerHTML = `<li class="card__platform--item">${resultadoBusqueda.plataforma}</li>
+    `;
+    cardText.appendChild(cardPlatform);
+
+    let cardList = document.createElement("ul");
+    cardList.setAttribute("class", "card__list");
+    cardList.innerHTML = `<li class="card__list--item"><span class="card__list--bold">Genero:</span>${resultadoBusqueda.genero}</li>
+    <li class="card__list--item"><span class="card__list--bold">Duracion:</span>${resultadoBusqueda.duracion}</li>
+    <li class="card__list--item"><span class="card__list--bold">Director:</span>${resultadoBusqueda.director}</li>
+    <li class="card__list--item"><span class="card__list--bold">Elenco:</span>${resultadoBusqueda.elenco}</li>`;
+    cardText.appendChild(cardList);
+
+    cardBody.appendChild(cardText);
+    document.getElementById("resultado").appendChild(cardBody);
+
     ev.preventDefault();
-    //FALTARIA AGREGAR ALGUN CARTEL QUE DIGA "PRUEBE OTRA PELICULA"
+    //FALTARIA AGREGAR ALGUN CARTEL QUE DIGA "PRUEBE OTRA PELICULA" y QUE NO SE QUEDEN GUARDADAS LAS BUSQUEDAS POR AHORA
 }
 //FIN BUSCADOR DE PELICULAS
