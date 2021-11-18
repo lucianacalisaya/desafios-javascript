@@ -1,84 +1,121 @@
-let listaDePlataformas = ["Netflix", "HBO Max", "Disney+", "Star+", "Paramount", "Amazon Prime"];
+//RENDERIZAR
+$(document).ready(function() {
+    loadingMovies();
+});
 
-//INICIO LISTA DE PELICULAS
-function Pelicula(titulo, genero, duracion, director, elenco, plataforma) {
-    this.titulo = titulo;
-    this.genero = genero;
-    this.duracion = duracion;
-    this.director = director;
-    this.elenco = elenco;
-    this.plataforma = plataforma;
-};
+let library = [];
 
-const pelicula1 = new Pelicula("The Avengers", "Accion, Ciencia ficcion", 143, "Joss Whedon", "Robert Downey Jr., Chris Evans, Jeremy Renner, Mark Ruffalo, Chris Hemsworth, Scarlett Johansson, Tom Hiddleston", listaDePlataformas[0] + ", " + listaDePlataformas[1] + ", " + listaDePlataformas[2] + " y " + listaDePlataformas[5]);
-
-const pelicula2 = new Pelicula("Mean Girls", "Comedia", 97 + "hs", "Mark Waters", "Lindsay Lohan, Rachel McAdams, Tim Meadows, Amy Poehler, Ana Gasteyer, Lacey Chabert, Lizzy Caplan", listaDePlataformas[5]);
-
-const pelicula3 = new Pelicula("The Hobbit: An Unexpected Journey", "Aventura, Fantasia epica", 169, "Peter Jackson", "Ian Mckellen, Martin Freeman, Richard Armitage, James Nesbitt, Ken Stott, Sylvester McCoy, Barry Humphries", listaDePlataformas[1]);
-
-const pelicula4 = new Pelicula("Charlie and the Chocolate Factory", "Aventuras, Comedia", 115, "Tim Burton", "Johnny Depp, Freddie Highmore, David Kelly, Helena Bonham Carter, Noah Taylor, Missi Pyle, James Fox", listaDePlataformas[5]);
-
-let listaDePeliculas = [pelicula1, pelicula2, pelicula3, pelicula4];
-
-//FIN LISTA DE PELICULAS
+//CARTILLA DE PELICULAS
+function loadingMovies() {
+    for (const movie of movies) {
+        //<img class="card__poster--image" src="${movie.poster} alt="Poster de ${movie.title}">
+        $("#movie").append(`<div class="movie__item">
+            <div class="movie__favorite">
+                <button class="movie__favorite--button" onclick="addToLibrary(${movie});"><i class="movie__favorite--icon fas fa-ticket-alt"></i></button>
+            </div>
+            <div class="movie__poster">
+            </div>
+            <div class="movie__details">
+                <h4 class="movie__title">${movie.title}</h4>
+                <p class="movie__plataform">${movie.platform}</p>
+                <ul class="movie__list">
+                    <li class="movie__list--item"><span class="movie__list--bold">Genero:</span>${movie.genre}</li>
+                    <li class="movie__list--item"><span class="movie__list--bold">Duracion:</span>${movie.duration}</li>
+                </ul>
+            </div>
+    </div>`); //agregar director y elenco con un +
+        $(`#btn${movie.id}`).on('click', function() {
+            addToLibrary(movie);
+        })
+    }
+}
+//FIN CARTILLA DE PELICULAS
 
 //BUSCADOR DE PELICULAS
 let searchboxForm = document.getElementById("searchboxForm");
-searchboxForm.addEventListener("submit", buscarPelicula);
-let searchboxText = document.getElementById("peliculaBuscada");
+searchboxForm.addEventListener("submit", findMovie);
+let searchboxText = document.getElementById("searchbox");
 
-function buscarPelicula(ev) {
-    let peliculaBuscada = searchboxText.value;
-    const resultadoBusqueda = listaDePeliculas.find(pelicula => pelicula.titulo === peliculaBuscada)
 
-    let cardBody = document.createElement("div");
-    cardBody.setAttribute("class", "card__body");
-    let cardText = document.createElement("div");
-    cardText.setAttribute("class", "card__text");
+function findMovie(ev) {
+    let movieSearched = searchboxText.value;
+    const movieFound = movies.find(movie => movie.title === movieSearched)
 
-    let cardFavorite = document.createElement("div");
-    cardFavorite.setAttribute("class", "card__favorite");
-    cardFavorite.innerHTML = `<a href="#" id="heart" class="heartSimulation" onclick="guardarPelicula();"></a>`;
-    cardText.appendChild(cardFavorite);
-
-    let cardTitle = document.createElement("h4");
-    cardTitle.setAttribute("class", "card__title");
-    cardTitle.innerHTML = `${resultadoBusqueda.titulo}`;
-    cardText.appendChild(cardTitle);
-
-    let cardPlatform = document.createElement("ul");
-    cardPlatform.setAttribute("class", "card__platform");
-    cardPlatform.innerHTML = `<li class="card__platform--item">${resultadoBusqueda.plataforma}</li>
-    `;
-    cardText.appendChild(cardPlatform);
-
-    let cardList = document.createElement("ul");
-    cardList.setAttribute("class", "card__list");
-    cardList.innerHTML = `<li class="card__list--item"><span class="card__list--bold">Genero:</span>${resultadoBusqueda.genero}</li>
-    <li class="card__list--item"><span class="card__list--bold">Duracion:</span>${resultadoBusqueda.duracion}</li>
-    <li class="card__list--item"><span class="card__list--bold">Director:</span>${resultadoBusqueda.director}</li>
-    <li class="card__list--item"><span class="card__list--bold">Elenco:</span>${resultadoBusqueda.elenco}</li>`;
-    cardText.appendChild(cardList);
-
-    cardBody.appendChild(cardText);
-    document.getElementById("resultado").appendChild(cardBody);
+    $("#result").append(`<div class="movie__item">
+            <div class="movie__favorite">
+                <button class="movie__favorite--button" onclick="addToLibrary(${movieFound});"><i class="movie__favorite--icon fas fa-ticket-alt"></i></button>
+            </div>
+            <div class="movie__poster">
+            </div>
+            <div class="movie__details">
+                <h4 class="movie__title">${movieFound.title}</h4>
+                <p class="movie__plataform">${movieFound.platform}</p>
+                <ul class="movie__list">
+                    <li class="movie__list--item"><span class="movie__list--bold">Genero:</span>${movieFound.genre}</li>
+                    <li class="movie__list--item"><span class="movie__list--bold">Duracion:</span>${movieFound.duration}</li>
+                    <li class="movie__list--item"><span class="movie__list--bold">Director:</span>${movieFound.director}</li>
+                    <li class="movie__list--item"><span class="movie__list--bold">Elenco:</span>${movieFound.cast}</li>
+                </ul>
+            </div>
+    </div>`);
 
     ev.preventDefault();
     //FALTARIA AGREGAR ALGUN CARTEL QUE DIGA "PRUEBE OTRA PELICULA" y QUE NO SE QUEDEN GUARDADAS LAS BUSQUEDAS POR AHORA
 };
 //FIN BUSCADOR DE PELICULAS
 
-//JSON
+//INICIO LIBRERIA DE PELICULAS
 
-searchboxForm.addEventListener("submit", guardarBusqueda);
+function addToLibrary(newLibraryMovie) {
+    library.push(newLibraryMovie);
+    console.log(library);
+    Swal.fire(
+        'Pelicula agregada a tu libreria',
+        newLibraryMovie.title,
+        'success'
+    );
+    localStorage.setItem("myLibrary", JSON.stringify(library));
+};
 
-function guardarBusqueda(ev) {
-    let busquedasRecientes = [searchboxText.value];
-    const busquedasAJSON = JSON.stringify(busquedasRecientes);
-    localStorage.setItem("peliculasBuscadas", busquedasAJSON);
-    ev.preventDefault();
+//BUSCADOR DE PELICULAS CON SWAL
+
+function buscar() {
+    let movieSearched = searchboxText.value;
+    const movieFound = movies.find(movie => movie.title === movieSearched);
+    $("#buscar").submit(function(e) {
+        e.preventDefault();
+        Swal.fire(
+            'Su pelicula se encuentra en',
+            movieFound.platform,
+            "success"
+        );
+    });
 
 };
+
+//FIN BUSCADOR CON SWAL
+
+//ICONO LIBRERIA - A resolver
+// let heart = document.getElementById("heart");
+
+// function guardarPelicula() {
+//     heart.style.border = "2px solid red";
+//     heart.style.background = "red";
+// }
+
+//FIN LIBRERIA DE PELICULAS
+
+//JSON
+
+// searchboxForm.addEventListener("submit", guardarBusqueda);
+
+// function guardarBusqueda(ev) {
+//     let busquedasRecientes = [searchboxText.value];
+//     const busquedasAJSON = JSON.stringify(busquedasRecientes);
+//     localStorage.setItem("peliculasBuscadas", busquedasAJSON);
+//     ev.preventDefault();
+
+// };
 // localStorage.setItem("peliculasBuscadas", "myValue");
 
 // let peliculaBuscada = localStorage.getItem("peliculasBuscadas");
@@ -87,12 +124,3 @@ function guardarBusqueda(ev) {
 // searchboxForm.addEventListener('storage', function(event) {
 //     console.log('The value for ' + event.key + ' was changed from' + event.oldValue + ' to ' + event.newValue);
 // }, false);
-//GUARDAR PELICULA - A resolver
-// let heart = document.getElementById("heart");
-
-// function guardarPelicula() {
-//     heart.style.border = "2px solid red";
-//     heart.style.background = "red";
-// }
-
-//INICIO LIBRERIA DE PELICULAS

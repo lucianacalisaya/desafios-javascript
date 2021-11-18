@@ -23,40 +23,42 @@ body {
   justify-content: center;
   height: 40vh; }
 
-.card {
+.movie {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
   justify-content: space-around;
   margin: 2% auto; }
-  .card__body {
-    width: 35%;
-    margin: 0 auto;
-    background-color: aliceblue;
-    border-radius: 10px;
-    color: black;
-    display: flex;
-    flex-direction: column;
-    align-items: center; }
-  .card__platform--item {
-    list-style: none; }
-  .card__list--item {
-    list-style: none; }
-  .card__item {
+  .movie__item {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    width: 15%;
-    height: 25vh;
+    width: 20%;
+    height: 33vh;
     background-color: aliceblue;
     border-radius: 5px; }
-  .card__image {
-    background-color: beige;
+  .movie__details {
+    width: 80%;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
+  .movie__platform {
+    font-size: 12px; }
+  .movie__list {
+    margin: 0;
+    padding: 0; }
+    .movie__list--item {
+      list-style: none; }
+  .movie__poster {
     width: 80%;
     height: 60%;
     border-radius: 10px; }
-  .card__text {
+    .movie__poster--image {
+      width: 100%;
+      border-radius: 10px; }
+  .movie__text {
     width: 80%;
     height: 20%;
     display: flex;
@@ -64,21 +66,14 @@ body {
     align-items: center;
     flex-direction: column;
     list-style: none; }
-  .card__favorite {
+  .movie__favorite {
     width: 80%;
     display: flex;
     justify-content: flex-end; }
-    .card__favorite .heartSimulation {
-      width: 15px;
-      height: 15px;
-      border: 2px solid black;
-      border-radius: 100%; }
-
-.card .card__test-text {
-  background-color: burlywood;
-  height: 40%;
-  width: 100%;
-  border-radius: 10px; }
+    .movie__favorite--button {
+      background-color: unset;
+      border: none;
+      color: black; }
 
 .footer {
   display: flex;
