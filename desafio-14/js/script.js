@@ -1,5 +1,6 @@
 //RENDERIZAR
 $(document).ready(function() {
+    //moviesInLibrary();
     //No estoy segura si tengo que poner todo el get json aca dentro
 });
 
@@ -19,6 +20,7 @@ $.getJSON(URLJSON, function(respuesta, estado) {
                     </div>
                     <div class="movie__details">
                         <h4 class="movie__title">${movie.title}</h4>
+                        <p class="movie__plataform">${movie.platform}</p>
                         <ul class="movie__list">
                             <li class="movie__list--item"><span class="movie__list--bold">Genero:</span>${movie.genre}</li>
                             <li class="movie__list--item"><span class="movie__list--bold">Duracion:</span>${movie.duration}</li>
@@ -45,7 +47,18 @@ function findMovie(ev) {
     let movieSearched = searchboxText.value;
     const movieFound = movies.find(movie => movie.title === movieSearched)
 
-    $("#result").append(`<div class="movie__item">
+    function buscar() {
+        let movieSearched = searchboxText.value;
+        const movieFound = movies.find(movie => movie.title === movieSearched);
+        $("#buscar").submit(function(e) {
+            e.preventDefault();
+            Swal.fire(
+                movieFound.title + ' se encuentra en',
+                movieFound.platform,
+                "info"
+            );
+        });
+        $("#result").append(`<div class="movie__item">
             <div class="movie__favorite">
                 <button class="movie__favorite--button" onclick="addToLibrary(${movieFound});"><i class="movie__favorite--icon fas fa-ticket-alt"></i></button>
             </div>
@@ -63,10 +76,16 @@ function findMovie(ev) {
             </div>
     </div>`);
 
+    };
+    buscar();
+
+
+
     ev.preventDefault();
     //FALTARIA AGREGAR ALGUN CARTEL QUE DIGA "PRUEBE OTRA PELICULA" y QUE NO SE QUEDEN GUARDADAS LAS BUSQUEDAS POR AHORA
 };
 //FIN BUSCADOR DE PELICULAS
+
 
 //INICIO LIBRERIA DE PELICULAS
 
@@ -106,22 +125,4 @@ function moviesInLibrary() {
     };
 };
 */
-//FIn LIBRERIA DE PELICULAS
-
-//BUSCADOR DE PELICULAS CON SWAL
-
-function buscar() {
-    let movieSearched = searchboxText.value;
-    const movieFound = movies.find(movie => movie.title === movieSearched);
-    $("#buscar").submit(function(e) {
-        e.preventDefault();
-        Swal.fire(
-            movieFound.title + ' se encuentra en',
-            movieFound.platform,
-            "info"
-        );
-    });
-
-};
-
-//FIN BUSCADOR CON SWAL
+//FIN LIBRERIA DE PELICULAS

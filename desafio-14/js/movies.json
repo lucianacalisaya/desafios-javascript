@@ -35,6 +35,7 @@
             "duration": 143,
             "director": "Joss Whedon",
             "cast": "Robert Downey Jr., Chris Evans, Jeremy Renner, Mark Ruffalo, Chris Hemsworth, Scarlett Johansson, Tom Hiddleston",
+            "platform": "Netflix, HBO Max, Disney+ y Amazon Prime",
             "poster": "https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/BA94912B10EE3095D2765271346AB59D88B1B8BE820B816A106AFD6BA8DDFBFD/scale?width=400&aspectRatio=1.78&format=jpeg"
         },
         {
@@ -44,6 +45,7 @@
             "duration": 97,
             "director": "Mark Waters",
             "cast": "Lindsay Lohan, Rachel McAdams, Tim Meadows, Amy Poehler, Ana Gasteyer, Lacey Chabert, Lizzy Caplan",
+            "platform": "Amazon Prime",
             "poster": "https://images-na.ssl-images-amazon.com/images/S/pv-target-images/b84743ca1afb9f79a776158d131fd6c607e4b5d12f9fd24bd7432b763f0813d6._UR1920,1080_RI_UX400_UY225_.jpg"
         },
         {
@@ -53,6 +55,7 @@
             "duration": 169,
             "director": "Peter Jackson",
             "cast": "Ian Mckellen, Martin Freeman, Richard Armitage, James Nesbitt, Ken Stott, Sylvester McCoy, Barry Humphries",
+            "platform": "No disponible",
             "poster": "https://occ-0-5398-1740.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABaGiUxboWTvCJCUGJBACMq4JKwFcC_o0Xn9WPkN96f0jumA13_G0pXGzJMvvUSXY1lvIrTUnglloYFQfdFzeJGM6Ts_Q.webp?r=55d"
         },
         {
@@ -62,6 +65,7 @@
             "duration": 115,
             "director": "Tim Burton",
             "cast": "Johnny Depp, Freddie Highmore, David Kelly, Helena Bonham Carter, Noah Taylor, Missi Pyle, James Fox",
+            "platform": "HBO Max",
             "poster": "blob:https://play.hbomax.com/ce17b4ef-d5c2-4361-80d9-75a94ffa42f3"
         }
     ]
