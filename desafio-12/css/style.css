@@ -14,6 +14,14 @@ body {
   align-items: center;
   justify-content: center;
   margin: 2% auto; }
+  .header__menu {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%; }
+    .header__menuList {
+      list-style: none; }
+    .header__menuLink {
+      color: white; }
   .header__searchbox--text {
     width: 90%; }
 
@@ -34,7 +42,7 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    width: 20%;
+    width: 20rem;
     height: 33vh;
     background-color: aliceblue;
     border-radius: 5px; }

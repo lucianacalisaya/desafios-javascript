@@ -1,6 +1,7 @@
 //RENDERIZAR
 $(document).ready(function() {
     loadingMovies();
+    moviesInLibrary();
 });
 
 let library = [];
@@ -11,7 +12,7 @@ function loadingMovies() {
         //<img class="card__poster--image" src="${movie.poster} alt="Poster de ${movie.title}">
         $("#movie").append(`<div class="movie__item">
             <div class="movie__favorite">
-                <button class="movie__favorite--button" onclick="addToLibrary(${movie});"><i class="movie__favorite--icon fas fa-ticket-alt"></i></button>
+                <button class="movie__favorite--button" id="btn${movie.id}"><i class="movie__favorite--icon fas fa-ticket-alt"></i></button>
             </div>
             <div class="movie__poster">
             </div>
@@ -26,9 +27,9 @@ function loadingMovies() {
     </div>`); //agregar director y elenco con un +
         $(`#btn${movie.id}`).on('click', function() {
             addToLibrary(movie);
-        })
-    }
-}
+        });
+    };
+};
 //FIN CARTILLA DE PELICULAS
 
 //BUSCADOR DE PELICULAS
@@ -70,12 +71,39 @@ function addToLibrary(newLibraryMovie) {
     library.push(newLibraryMovie);
     console.log(library);
     Swal.fire(
-        'Pelicula agregada a tu libreria',
         newLibraryMovie.title,
+        'Ha sido agregada a tu libreria',
         'success'
     );
     localStorage.setItem("myLibrary", JSON.stringify(library));
 };
+
+let probando = localStorage.getItem("myLibrary");
+console.log(probando);
+
+function moviesInLibrary() {
+    for (const addMovie of probando) {
+        $("#guardados").append(`<div class="movie__item">
+        <div class="movie__favorite">
+            <button class="movie__favorite--button" onclick="addToLibrary(${addMovie});"><i class="movie__favorite--icon fas fa-ticket-alt"></i></button>
+        </div>
+        <div class="movie__poster">
+        </div>
+        <div class="movie__details">
+            <h4 class="movie__title">${addMovie.title}</h4>
+            <p class="movie__plataform">${addMovie.platform}</p>
+            <ul class="movie__list">
+                <li class="movie__list--item"><span class="movie__list--bold">Genero:</span>${addMovie.genre}</li>
+                <li class="movie__list--item"><span class="movie__list--bold">Duracion:</span>${addMovie.duration}</li>
+                <li class="movie__list--item"><span class="movie__list--bold">Director:</span>${addMovie.director}</li>
+                <li class="movie__list--item"><span class="movie__list--bold">Elenco:</span>${addMovie.cast}</li>
+            </ul>
+        </div>
+</div>`);
+    };
+};
+
+//FIn LIBRERIA DE PELICULAS
 
 //BUSCADOR DE PELICULAS CON SWAL
 
@@ -85,9 +113,9 @@ function buscar() {
     $("#buscar").submit(function(e) {
         e.preventDefault();
         Swal.fire(
-            'Su pelicula se encuentra en',
+            movieFound.title + ' se encuentra en',
             movieFound.platform,
-            "success"
+            "info"
         );
     });
 
