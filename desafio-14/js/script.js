@@ -31,54 +31,48 @@ $.getJSON(URLJSON, function(respuesta, estado) {
                 addToLibrary(movie);
             });
         };
-    }
+    };
 });
 
 let library = [];
-
 
 //BUSCADOR DE PELICULAS
 let searchboxForm = document.getElementById("searchboxForm");
 searchboxForm.addEventListener("submit", findMovie);
 let searchboxText = document.getElementById("searchbox");
 
-
 function findMovie(ev) {
-    let movieSearched = searchboxText.value;
-    const movieFound = movies.find(movie => movie.title === movieSearched)
+    $.getJSON(URLJSON, function(respuesta, estado) {
+        if (estado == "success") {
+            let movies = respuesta.movies;
+            let movieSearched = searchboxText.value;
+            const movieFound = movies.find(movie => movie.title === movieSearched);
 
-    function buscar() {
-        let movieSearched = searchboxText.value;
-        const movieFound = movies.find(movie => movie.title === movieSearched);
-        $("#buscar").submit(function(e) {
-            e.preventDefault();
+            // $("#result").append(`
+            // <div class="movie__item">
+            //     <div class="movie__favorite">
+            //         <button class="movie__favorite--button" onclick="addToLibrary(${movieFound});"><i class="movie__favorite--icon fas fa-ticket-alt"></i></button>
+            //     </div>
+            //     <div class="movie__poster">
+            //     </div>
+            //     <div class="movie__details">
+            //         <h4 class="movie__title">${movieFound.title}</h4>
+            //         <p class="movie__plataform">${movieFound.platform}</p>
+            //         <ul class="movie__list">
+            //             <li class="movie__list--item"><span class="movie__list--bold">Genero:</span>${movieFound.genre}</li>
+            //             <li class="movie__list--item"><span class="movie__list--bold">Duracion:</span>${movieFound.duration}</li>
+            //             <li class="movie__list--item"><span class="movie__list--bold">Director:</span>${movieFound.director}</li>
+            //             <li class="movie__list--item"><span class="movie__list--bold">Elenco:</span>${movieFound.cast}</li>
+            //         </ul>
+            //     </div>
+            // </div>`);
             Swal.fire(
                 movieFound.title + ' se encuentra en',
                 movieFound.platform,
                 "info"
             );
-        });
-        $("#result").append(`<div class="movie__item">
-            <div class="movie__favorite">
-                <button class="movie__favorite--button" onclick="addToLibrary(${movieFound});"><i class="movie__favorite--icon fas fa-ticket-alt"></i></button>
-            </div>
-            <div class="movie__poster">
-            </div>
-            <div class="movie__details">
-                <h4 class="movie__title">${movieFound.title}</h4>
-                <p class="movie__plataform">${movieFound.platform}</p>
-                <ul class="movie__list">
-                    <li class="movie__list--item"><span class="movie__list--bold">Genero:</span>${movieFound.genre}</li>
-                    <li class="movie__list--item"><span class="movie__list--bold">Duracion:</span>${movieFound.duration}</li>
-                    <li class="movie__list--item"><span class="movie__list--bold">Director:</span>${movieFound.director}</li>
-                    <li class="movie__list--item"><span class="movie__list--bold">Elenco:</span>${movieFound.cast}</li>
-                </ul>
-            </div>
-    </div>`);
-
-    };
-    buscar();
-
+        };
+    })
     ev.preventDefault();
     //FALTARIA AGREGAR ALGUN CARTEL QUE DIGA "PRUEBE OTRA PELICULA" y QUE NO SE QUEDEN GUARDADAS LAS BUSQUEDAS POR AHORA
 };
@@ -98,7 +92,7 @@ function addToLibrary(newLibraryMovie) {
     localStorage.setItem("myLibrary", JSON.stringify(library));
 };
 
-const libreria = JSON.parse(localStorage.getItem("myLibrary"))
+const libreria = JSON.parse(localStorage.getItem("myLibrary"));
 
 function moviesInLibrary() {
     for (const addMovie of libreria) {
