@@ -1,6 +1,6 @@
 //RENDERIZAR
 $(document).ready(function() {
-    //moviesInLibrary();
+    moviesInLibrary();
     //No estoy segura si tengo que poner todo el get json aca dentro
 });
 
@@ -10,7 +10,6 @@ $.getJSON(URLJSON, function(respuesta, estado) {
     if (estado == "success") {
         let movies = respuesta.movies;
         for (const movie of movies) {
-            //<img class="card__poster--image" src="${movie.poster} alt="Poster de ${movie.title}">
             //agregar plataformas
             $("#movie").append(`<div class="movie__item">
                     <div class="movie__favorite">
@@ -80,8 +79,6 @@ function findMovie(ev) {
     };
     buscar();
 
-
-
     ev.preventDefault();
     //FALTARIA AGREGAR ALGUN CARTEL QUE DIGA "PRUEBE OTRA PELICULA" y QUE NO SE QUEDEN GUARDADAS LAS BUSQUEDAS POR AHORA
 };
@@ -101,11 +98,10 @@ function addToLibrary(newLibraryMovie) {
     localStorage.setItem("myLibrary", JSON.stringify(library));
 };
 
-let probando = localStorage.getItem("myLibrary");
-console.log(probando);
-/*
+const libreria = JSON.parse(localStorage.getItem("myLibrary"))
+
 function moviesInLibrary() {
-    for (const addMovie of probando) {
+    for (const addMovie of libreria) {
         $("#guardados").append(`<div class="movie__item">
         <div class="movie__favorite">
             <button class="movie__favorite--button" onclick="addToLibrary(${addMovie});"><i class="movie__favorite--icon fas fa-ticket-alt"></i></button>
@@ -125,5 +121,5 @@ function moviesInLibrary() {
 </div>`);
     };
 };
-*/
+
 //FIN LIBRERIA DE PELICULAS
