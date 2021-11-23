@@ -43,17 +43,21 @@ body {
     justify-content: center;
     flex-direction: column;
     width: 20rem;
-    height: 33vh;
+    height: 24rem;
     background-color: aliceblue;
     border-radius: 5px; }
   .movie__details {
     width: 80%;
+    height: 70%;
     color: black;
     display: flex;
     flex-direction: column;
     align-items: center; }
+  .movie__title {
+    height: 50%; }
   .movie__platform {
-    font-size: 12px; }
+    font-size: 12px;
+    height: 30%; }
   .movie__list {
     margin: 0;
     padding: 0; }

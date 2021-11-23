@@ -54,19 +54,24 @@ body {
         justify-content: center;
         flex-direction: column;
         width: 20rem;
-        height: 33vh;
+        height: 24rem;
         background-color: $cardBackground;
         border-radius: 5px;
     }
     &__details {
         width: 80%;
+        height: 70%;
         color: $cardFontColor;
         display: flex;
         flex-direction: column;
         align-items: center;
     }
+    &__title {
+        height: 50%;
+    }
     &__platform {
         font-size: 12px;
+        height: 30%;
     }
     &__list {
         margin: 0;

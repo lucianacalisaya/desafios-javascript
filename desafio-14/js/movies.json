@@ -36,7 +36,7 @@
             "director": "Joss Whedon",
             "cast": "Robert Downey Jr., Chris Evans, Jeremy Renner, Mark Ruffalo, Chris Hemsworth, Scarlett Johansson, Tom Hiddleston",
             "platform": "Netflix, HBO Max, Disney+ y Amazon Prime",
-            "poster": "https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/BA94912B10EE3095D2765271346AB59D88B1B8BE820B816A106AFD6BA8DDFBFD/scale?width=400&aspectRatio=1.78&format=jpeg"
+            "poster": "img/avengers.jfif"
         },
         {
             "id": 2,
@@ -66,7 +66,7 @@
             "director": "Tim Burton",
             "cast": "Johnny Depp, Freddie Highmore, David Kelly, Helena Bonham Carter, Noah Taylor, Missi Pyle, James Fox",
             "platform": "HBO Max",
-            "poster": "blob:https://play.hbomax.com/ce17b4ef-d5c2-4361-80d9-75a94ffa42f3"
+            "poster": "img/charlie.jfif"
         }
     ]
 }

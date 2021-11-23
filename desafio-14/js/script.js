@@ -17,6 +17,7 @@ $.getJSON(URLJSON, function(respuesta, estado) {
                         <button class="movie__favorite--button" id="btn${movie.id}"><i class="movie__favorite--icon fas fa-ticket-alt"></i></button>
                     </div>
                     <div class="movie__poster">
+                        <img class="movie__poster--image" src="${movie.poster}" alt="Poster de ${movie.title}">
                     </div>
                     <div class="movie__details">
                         <h4 class="movie__title">${movie.title}</h4>
